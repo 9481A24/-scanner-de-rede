@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu Projeto IP Scanner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 1.4em;
+      color: #006400;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔍 Leitor de Endereço IP</h1>
+  <p>Clique no botão abaixo para ver seu IP público:</p>
+  <button onclick="obterIP()">Mostrar IP</button>
+
+  <div id="resultado">IP aparecerá aqui</div>
+
+  <script>
+    function obterIP() {
+      fetch("https://api64.ipify.org?format=json")
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("resultado").innerText = `Seu IP: ${data.ip}`;
+        })
+        .catch(() => {
+          document.getElementById("resultado").innerText = "Erro ao obter IP.";
+        });
+    }
+  </script>
+
+</body>
+</html>
 
